@@ -1,0 +1,25 @@
+# Конфигурация IoT-устройства.
+# Содержит настройки датчиков, сетевых параметров
+# и алгоритмов обработки данных.
+
+define:
+  SAMPLE_RATE: 100         # Частота выборок в мс
+  BATTERY_CAPACITY: 5000   # Емкость батареи в мАч
+  ALERT_THRESHOLD: 75      # Порог срабатывания тревоги (в процентах)
+
+DEVICE:
+  NAME: "SmartSensor-1"
+  LOCATION: "Warehouse A"
+  SENSORS:
+    TEMPERATURE:
+      ENABLED: true
+      SAMPLE_RATE: "$(SAMPLE_RATE)"
+    HUMIDITY:
+      ENABLED: true
+      SAMPLE_RATE: "$(SAMPLE_RATE 2 *)"  # Должно быть 200 мс
+  NETWORK:
+    SSID: "IoT_Network"
+    PASSWORD: "iot_password123"
+    CONNECTION_TIMEOUT: 15
+  ALERTS:
+    BATTERY_LOW: "$(BATTERY_CAPACITY ALERT_THRESHOLD *)"  # Должно быть 3750

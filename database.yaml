@@ -1,0 +1,21 @@
+# Конфигурация базы данных.
+# Определяет подключение к базе, настройки пула соединений
+# и параметры производительности.
+
+define:
+  MAX_CONNECTIONS: 150
+  CONNECTION_TIMEOUT: 20
+  RETRIES: 3
+
+DATABASE:
+  HOST: "db.example.com"
+  PORT: 5432
+  USERNAME: "admin"
+  PASSWORD: "securepassword"
+  CONNECTION_POOL:
+    MAX_CONNECTIONS: "$(MAX_CONNECTIONS)"
+    TIMEOUT: "$(CONNECTION_TIMEOUT)"
+    RETRIES: "$(RETRIES)"
+  PERFORMANCE:
+    CACHE_SIZE: 1024
+    QUERY_TIMEOUT: "$(CONNECTION_TIMEOUT 5 +)"  # Должно быть 25

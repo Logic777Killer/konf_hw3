@@ -1,0 +1,23 @@
+# Конфигурация веб-сервера.
+# Включает параметры для обработки запросов,
+# настройки SSL и ограничения нагрузки.
+
+define:
+  MAX_CLIENTS: 500
+  TIMEOUT: 30
+  PORT: 8080
+
+SERVER:
+  HOSTNAME: "example.com"
+  PORT: "$(PORT)"
+  SSL:
+    ENABLED: true
+    CERTIFICATE_PATH: "/etc/ssl/cert.pem"
+    KEY_PATH: "/etc/ssl/key.pem"
+  REQUEST_LIMITS:
+    MAX_CLIENTS: "$(MAX_CLIENTS)"
+    TIMEOUT: "$(TIMEOUT)"
+  ENDPOINTS:
+    - "/api/login"
+    - "/api/register"
+    - "/api/logout"
